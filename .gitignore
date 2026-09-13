@@ -1,0 +1,15 @@
+build/
+*.o
+*.obj
+*.exe
+*.out
+*.so
+*.a
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Testing/
+.vscode/
+.idea/
+*.csv
+!benchmarks/results/.gitkeep
