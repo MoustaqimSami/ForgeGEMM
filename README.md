@@ -19,7 +19,8 @@ adapted here with a CUDA/HIP portability goal from the start.
 - [x] `Matrix<T>`: owning, row-major, bounds-checked, deterministic seeded random init
 - [x] `MatrixView<T>` / `ConstMatrixView<T>`: non-owning views, separate types from `Matrix<T>` by design
 - [x] Host-side correctness tests for both (zero/identity/1x1/rectangular/bounds/view-writes-through/deterministic-random)
-- [ ] `DeviceBuffer<T>` RAII wrapper for GPU memory
+- [x] Matrix/MatrixView equality operators and MatrixView::fill, with tests
+- [x] `DeviceBuffer<T>` RAII wrapper for GPU memory
 - [ ] Naive CUDA SGEMM kernel
 - [ ] Shared-memory tiled SGEMM kernel
 - [ ] cuBLAS reference backend + correctness comparison

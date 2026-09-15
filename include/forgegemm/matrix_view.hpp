@@ -44,6 +44,27 @@ public:
         return data_[index(r, c)];
     }
 
+    // Sets every element in the view to the same value. Writes through to
+    // whatever the view is looking at -- there is no separate storage here.
+    void fill(T value) {
+        for (std::size_t r = 0; r < rows_; ++r) {
+            for (std::size_t c = 0; c < cols_; ++c) {
+                (*this)(r, c) = value;
+            }
+        }
+    }
+
+    bool operator==(const MatrixView& other) const {
+        if (rows_ != other.rows_ || cols_ != other.cols_) return false;
+        for (std::size_t r = 0; r < rows_; ++r) {
+            for (std::size_t c = 0; c < cols_; ++c) {
+                if ((*this)(r, c) != other(r, c)) return false;
+            }
+        }
+        return true;
+    }
+    bool operator!=(const MatrixView& other) const { return !(*this == other); }
+
 private:
     std::size_t index(std::size_t r, std::size_t c) const {
         return r * cols_ + c;

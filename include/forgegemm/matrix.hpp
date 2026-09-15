@@ -68,6 +68,14 @@ public:
         return data_[index(r, c)];
     }
 
+    // Element-wise equality. Mainly for tests: comparing a kernel's output
+    // matrix against a CPU reference matrix.
+    bool operator==(const Matrix& other) const {
+        return rows_ == other.rows_ && cols_ == other.cols_ &&
+               data_ == other.data_;
+    }
+    bool operator!=(const Matrix& other) const { return !(*this == other); }
+
 private:
     std::size_t index(std::size_t r, std::size_t c) const {
         return r * cols_ + c;
