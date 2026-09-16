@@ -21,6 +21,7 @@ adapted here with a CUDA/HIP portability goal from the start.
 - [x] Host-side correctness tests for both (zero/identity/1x1/rectangular/bounds/view-writes-through/deterministic-random)
 - [x] Matrix/MatrixView equality operators and MatrixView::fill, with tests
 - [x] `DeviceBuffer<T>` RAII wrapper for GPU memory
+- [x] CudaEvent RAII wrapper for GPU timing (requires CUDA toolkit -- not buildable on macOS)
 - [ ] Naive CUDA SGEMM kernel
 - [ ] Shared-memory tiled SGEMM kernel
 - [ ] cuBLAS reference backend + correctness comparison
