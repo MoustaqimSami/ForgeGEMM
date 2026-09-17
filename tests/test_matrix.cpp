@@ -8,6 +8,7 @@
 
 #include "forgegemm/matrix.hpp"
 #include "forgegemm/matrix_view.hpp"
+#include "forgegemm/gemm_config.hpp"
 
 using forgegemm::Matrix;
 using forgegemm::MatrixView;
@@ -95,6 +96,23 @@ static void test_random_matrix_is_deterministic() {
             CHECK(a(r, c) == b(r, c));
         }
     }
+}
+
+static void test_gemm_config_defaults() {
+    forgegemm::GemmConfig cfg;
+    CHECK(cfg.M == 0 && cfg.N == 0 && cfg.K == 0);
+    CHECK(cfg.alpha == 1.0 && cfg.beta == 0.0);
+    CHECK(!cfg.transposeA && !cfg.transposeB);
+}
+
+static void test_gemm_config_explicit_values() {
+    forgegemm::GemmConfig cfg;
+    cfg.M = 128; cfg.N = 64; cfg.K = 32;
+    cfg.alpha = 2.0; cfg.beta = 0.5;
+    cfg.transposeA = true;
+    CHECK(cfg.M == 128 && cfg.N == 64 && cfg.K == 32);
+    CHECK(cfg.alpha == 2.0 && cfg.beta == 0.5);
+    CHECK(cfg.transposeA && !cfg.transposeB);
 }
 
 int main() {

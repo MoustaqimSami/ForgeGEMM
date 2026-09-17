@@ -29,7 +29,7 @@ public:
         return m;
     }
 
-    // Deterministic seeded random init -- reproducibility matters more than
+    // Deterministic seeded random init - reproducibility matters more than
     // "real" randomness for correctness tests and benchmark repeatability.
     static Matrix Random(std::size_t rows, std::size_t cols,
                           unsigned seed = 42,
